@@ -1,9 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
-const ChatBody = ({ messages, typingStatus, lastMessageRef }) => {
+import style from "./style.module.css";
+import Hover from "../../../../assets/Hover.png";
+const ChatBody = ({ messages, lastMessageRef }) => {
   const navigate = useNavigate();
-
+  const name = localStorage.getItem("userName");
   const handleLeaveChat = () => {
     localStorage.removeItem("userName");
     navigate("/");
@@ -12,35 +13,52 @@ const ChatBody = ({ messages, typingStatus, lastMessageRef }) => {
 
   return (
     <>
-      <header className="chat__mainHeader">
-        <p>Hangout with Colleagues</p>
-        <button className="leaveChat__btn" onClick={handleLeaveChat}>
-          LEAVE CHAT
-        </button>
+      <header className={style.Header}>
+        <h3 className="text-[#7e98df] font-semibold"> {name}</h3>
+        <div className="dropdown dropdown-bottom dropdown-end">
+          <label tabIndex={0} className="btn m-1">
+            <img src={Hover} />
+          </label>
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <button
+                type="button"
+                className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                onClick={handleLeaveChat}
+              >
+                Logout
+              </button>
+            </li>
+          </ul>
+        </div>
       </header>
 
-      <div className="message__container">
+      <div className={style.chatContainer}>
         {messages.map((message) =>
           message.name === localStorage.getItem("userName") ? (
-            <div className="message__chats" key={message.id}>
-              <p className="sender__name">You</p>
-              <div className="message__sender">
-                <p>{message.text}</p>
+            <div className={style.chats} key={message.id}>
+              <div className="chat chat-end">
+                <p className={style.senderName}>You</p>
+                <div className="chat-bubble chat-bubble-success">
+                  <p>{message.text}</p>
+                </div>
               </div>
             </div>
           ) : (
-            <div className="message__chats" key={message.id}>
+            <div className={style.chats} key={message.id}>
               <p>{message.name}</p>
-              <div className="message__recipient">
-                <p>{message.text}</p>
+              <div className="chat chat-start">
+                <div className="chat-bubble chat-bubble-secondary">
+                  <p>{message.text}</p>
+                </div>
               </div>
             </div>
           )
         )}
 
-        <div className="message__status">
-          <p>{typingStatus}</p>
-        </div>
         <div ref={lastMessageRef} />
       </div>
     </>

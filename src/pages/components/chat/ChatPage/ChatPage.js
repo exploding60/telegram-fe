@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import ChatBar from "../ChatBar/ChatBar";
 import ChatBody from "../ChatBody/ChatBody";
 import ChatFooter from "../ChatFooter/ChatFooter";
+import style from "./style.module.css";
 
 const ChatPage = ({ socket }) => {
   const [messages, setMessages] = useState([]);
@@ -22,9 +23,9 @@ const ChatPage = ({ socket }) => {
   }, [messages]);
 
   return (
-    <div className="chat">
+    <div className={style.chat}>
       <ChatBar socket={socket} />
-      <div className="chat__main">
+      <div className={style.chat__main}>
         <ChatBody
           messages={messages}
           typingStatus={typingStatus}

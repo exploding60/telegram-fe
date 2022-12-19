@@ -17,7 +17,7 @@ export const loginUser = (data, navigate) => async (dispacth) => {
     // localStorage.setItem("userName", user.username);
     dispacth({ type: "USER_LOGIN_SUCCESS", payload: user });
     alert("Berhasil Login");
-    navigate("/");
+    navigate("/join");
   } catch (err) {
     console.log(err);
   }
