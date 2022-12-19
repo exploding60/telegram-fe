@@ -1,48 +1,32 @@
-import React, { useEffect, useState } from "react";
-import { io } from "socket.io-client";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function Chat() {
-  const [message, setMessage] = useState("");
-  const [socket, setSocket] = useState(null);
-  const [messages, setMessages] = useState([]);
+const Home = ({ socket }) => {
+  const navigate = useNavigate();
+  const [userName, setUserName] = useState("");
 
-  useEffect(() => {
-    const resultSocket = io("http://localhost:3006");
-    setSocket(resultSocket);
-  }, []);
-
-  useEffect(() => {
-    if (socket) {
-      socket.on("messageBe", (data) => {
-        setMessages((current) => [...current, data]);
-      });
-    }
-  }, [socket]);
-
-  const handleMessage = () => {
-    socket.emit("message", message);
-    setMessage("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    localStorage.setItem("userName", userName);
+    socket.emit("newUser", { userName, socketID: socket.id });
+    navigate("/chat");
   };
-
   return (
-    <div className="App">
-      <ul>
-        {messages.map((item, index) => (
-          <li key={index + 1}>
-            {item.message} - {item.date}
-          </li>
-        ))}
-      </ul>
+    <form className="home__container" onSubmit={handleSubmit}>
+      <h2 className="home__header">Sign in to Open Chat</h2>
+      <label htmlFor="username">Username</label>
       <input
         type="text"
-        value={message}
-        name="message"
-        onChange={(e) => setMessage(e.target.value)}
+        minLength={6}
+        name="username"
+        id="username"
+        className="username__input"
+        value={userName}
+        onChange={(e) => setUserName(e.target.value)}
       />
-      <br />
-      <button onClick={handleMessage}>tes</button>
-    </div>
+      <button className="home__cta">SIGN IN</button>
+    </form>
   );
-}
+};
 
-export default Chat;
+export default Home;

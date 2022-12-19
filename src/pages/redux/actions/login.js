@@ -10,16 +10,15 @@ export const loginUser = (data, navigate) => async (dispacth) => {
     const user = result.data.data;
     console.log(user, "user");
     localStorage.setItem("token", user.token);
-    localStorage.setItem("username", user.username);
+    const userName = user.username;
+    localStorage.setItem("userName", userName);
+    // socket.emit("newUser", { userName, socketID: socket.id });
+
+    // localStorage.setItem("userName", user.username);
     dispacth({ type: "USER_LOGIN_SUCCESS", payload: user });
     alert("Berhasil Login");
     navigate("/");
   } catch (err) {
-    if (err.response.status === 402) {
-      alert("Kamu Belum Verfikasi Akunmu,Silahkan Verifikasi terlebih dahulu");
-      navigate("/auth");
-    } else if (err.response.status === 404) {
-      alert("Password atau email yang kamu masukan salah");
-    }
+    console.log(err);
   }
 };
