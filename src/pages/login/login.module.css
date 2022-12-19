@@ -16,6 +16,19 @@
   transform-origin: top center;
 }
 
+.formJoin {
+  width: 30%;
+  border-radius: 30px;
+  background-color: white;
+  margin: auto;
+  padding: 30px;
+  animation: come 400ms ease-in-out forwards;
+  transform-origin: top center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .inputauth {
   border: none;
   border-bottom: 1px solid black;
