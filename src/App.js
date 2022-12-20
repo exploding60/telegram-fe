@@ -8,7 +8,7 @@ import Register from "../src/pages/register/";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import socketIO from "socket.io-client";
 function App() {
-  const socket = socketIO.connect("http://localhost:3009");
+  const socket = socketIO.connect(process.env.REACT_APP_BACKEND_API_HOST);
   return (
     <BrowserRouter>
       <Routes>
