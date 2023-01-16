@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import style from "./style.module.css";
 import Hover from "../../../../assets/Hover.png";
-const ChatBody = ({ messages, lastMessageRef }) => {
+const ChatBody = ({ listchat, login }) => {
   const navigate = useNavigate();
   const name = localStorage.getItem("userName");
   const handleLeaveChat = () => {
@@ -37,7 +37,30 @@ const ChatBody = ({ messages, lastMessageRef }) => {
       </header>
 
       <div className={style.chatContainer}>
-        {messages.map((message) =>
+        {listchat.map((item, index) => (
+          <div key={index}>
+            {item.sender === login.data.username ? (
+              <div className={style.chats}>
+                <div className="chat chat-end">
+                  <p className={style.senderName}>You</p>
+                  <div className="chat-bubble chat-bubble-success">
+                    <p>{item.message}</p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className={style.chats}>
+                <p>{item.username}</p>
+                <div className="chat chat-start">
+                  <div className="chat-bubble chat-bubble-secondary">
+                    <p>{item.message}</p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+        {/* {messages.map((message) =>
           message.name === localStorage.getItem("userName") ? (
             <div className={style.chats} key={message.id}>
               <div className="chat chat-end">
@@ -57,9 +80,7 @@ const ChatBody = ({ messages, lastMessageRef }) => {
               </div>
             </div>
           )
-        )}
-
-        <div ref={lastMessageRef} />
+        )} */}
       </div>
     </>
   );

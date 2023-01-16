@@ -13,7 +13,13 @@ const ChatBar = ({ socket }) => {
   return (
     <div className={style.sidebar}>
       <h2 style={{ color: "#7e98df", fontWeight: "700" }}>Chat App</h2>
-      <div>
+      <div className="row">
+        <div className="flex">
+          <img className="" src={Profile2}></img>
+          <h4 className="self-center flex">asasasasas</h4>
+        </div>
+      </div>
+      <div className="grid">
         <h4 className={style.header}>Online Users</h4>
         <div className={style.users}>
           {users.map((user) => (
@@ -31,6 +37,13 @@ const ChatBar = ({ socket }) => {
             </div>
           ))}
         </div>
+      </div>
+      <div className="col-auto">
+        <input
+          type="text"
+          placeholder="Type here"
+          className="input input-bordered w-full max-w-xs"
+        />
       </div>
     </div>
   );

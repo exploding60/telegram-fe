@@ -7,20 +7,19 @@ export const loginUser = (data, navigate) => async (dispacth) => {
     console.log(data);
     dispacth({ type: "USER_LOGIN_PENDING" });
     const result = await axios.post(
-      process.env.REACT_APP_BACKEND_API_HOST + "/auth/login",
+      process.env.REACT_APP_BACKEND_API_HOST + "/users/login",
       data
     );
-    const user = result.data.data;
-    console.log(user, "user");
-    localStorage.setItem("token", user.token);
-    const userName = user.username;
-    localStorage.setItem("userName", userName);
+    const users = result.data;
+    console.log(users, "user");
+    localStorage.setItem("token", users.token);
+    localStorage.setItem("user", JSON.stringify(users.data));
     // socket.emit("newUser", { userName, socketID: socket.id });
 
     // localStorage.setItem("userName", user.username);
-    dispacth({ type: "USER_LOGIN_SUCCESS", payload: user });
+    dispacth({ type: "USER_LOGIN_SUCCESS", payload: users });
     alert("Berhasil Login");
-    navigate("/join");
+    navigate("/home");
   } catch (err) {
     console.log(err);
   }
