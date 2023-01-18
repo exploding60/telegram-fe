@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../redux/actions/login";
 import { Form } from "react-bootstrap";
-
+import { Link } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,7 +28,9 @@ const Login = () => {
     <div>
       <div className={style.body}>
         <div className={style.formbox}>
-          <h5 className="color-blue text-center">Login</h5>
+          <h3 className="text-center" style={{ color: "#7e98df" }}>
+            Login
+          </h3>
           <p>Hi,Welcome Back</p>
 
           <Form onSubmit={postData}>
@@ -61,6 +63,12 @@ const Login = () => {
               Login
             </button>
           </Form>
+
+          <Link to="/register">
+            <p className="text-center mt-5">
+              Dont Have Account?<span>Sign-up here</span>
+            </p>
+          </Link>
         </div>
       </div>
     </div>

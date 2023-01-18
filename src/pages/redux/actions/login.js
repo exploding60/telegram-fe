@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Next } from "react-bootstrap/esm/PageItem";
 import { Navigate } from "react-router-dom";
-
+import Swal from "sweetalert2";
 export const loginUser = (data, navigate) => async (dispacth) => {
   try {
     console.log(data);
@@ -18,9 +18,10 @@ export const loginUser = (data, navigate) => async (dispacth) => {
 
     // localStorage.setItem("userName", user.username);
     dispacth({ type: "USER_LOGIN_SUCCESS", payload: users });
-    alert("Berhasil Login");
+    Swal.fire("success", "Login Berhasil", "success");
     navigate("/home");
   } catch (err) {
+    Swal.fire("Warning", "Email atau password salah", "warning");
     console.log(err);
   }
 };

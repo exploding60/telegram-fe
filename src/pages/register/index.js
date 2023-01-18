@@ -5,9 +5,10 @@ import axios from "axios";
 
 import { Router } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Register = () => {
+  const Navigate = useNavigate();
   const [user, setUser] = useState({
     username: "",
     email: "",
@@ -26,23 +27,25 @@ const Register = () => {
     }
     try {
       const result = await axios.post(
-        "http://localhost:3009/auth/register",
+        "http://localhost:3009/users/register",
         user
       );
 
       alert("Success", "Register Success", "success");
-      Navigate("/auth/login");
+      Navigate("/");
     } catch (err) {
       console.log(err.response.status);
       alert("Warning", "Email Already Registered", "error");
-      Navigate("/auth/login");
+      Navigate("/");
     }
   };
   return (
     <>
       <div className={style.body}>
         <div className={style.formbox}>
-          <h5 className="color-blue text-center">Register</h5>
+          <h3 className="text-center" style={{ color: "#7e98df" }}>
+            Register
+          </h3>
           <p>Register</p>
           <form onSubmit={handleSubmit}>
             <div className="row">
@@ -68,17 +71,20 @@ const Register = () => {
                 onChange={handleChange}
               />
             </div>
-            <div className="d-flex justify-content-end mt-4">
-              Forgot Password
-            </div>
+
             <button
               type="submit"
-              className="btn w-100 text-white p-3 rounded-pill mt-3"
+              className="btn w-100 text-white p-3 rounded-pill mt-3 mt-5"
               style={{ backgroundColor: "#7E98DF" }}
             >
-              Login
+              Register
             </button>
           </form>
+          <Link to="/register">
+            <p className="text-center mt-5">
+              Already had Account?<span>Login</span>
+            </p>
+          </Link>
         </div>
       </div>
     </>

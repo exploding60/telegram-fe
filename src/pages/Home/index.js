@@ -12,7 +12,8 @@ import Profile2 from "../../assets/Profile2.jpg";
 import Hover from "../../assets/Hover.png";
 import { useNavigate } from "react-router-dom";
 import { data } from "autoprefixer";
-
+import Modal from "../components/Modal";
+import Edit from "../../assets/Edit.svg";
 const Home = () => {
   const [socketio, setSocketIo] = useState(null);
   const [listchat, setListchat] = useState([]);
@@ -25,6 +26,9 @@ const Home = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const self = user.data;
   const friend = JSON.parse(localStorage.getItem("receiver"));
+
+  const [profile, setProfile] = useState([]);
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     const data = user.data;
@@ -56,6 +60,47 @@ const Home = () => {
     setSocketIo(socket);
   }, []);
 
+  useEffect(() => {
+    const getProfile = async () => {
+      try {
+        const user = JSON.parse(localStorage.getItem("user"));
+        const token = user.token;
+        let result = await axios.get(
+          process.env.REACT_APP_BACKEND_API_HOST + `/users/profile`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setProfile(result.data.data);
+        console.log(result.data.data, "result");
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getProfile();
+  }, []);
+  // useEffect(() => {
+  //   const user = JSON.parse(localStorage.getItem("user"));
+  //   const token = user.token;
+
+  //   axios
+  //     .get(`http://localhost:3009/users/profile`, {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     })
+  //     .then((response) => {
+  //       console.log(response, "res");
+  //       setProfile(response.data.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
+  console.log(profile, "profile asasa");
   const SubmitMessage = (e) => {
     e.preventDefault();
     const user = JSON.parse(localStorage.getItem("user"));
@@ -112,16 +157,53 @@ const Home = () => {
           <h2 style={{ color: "#7e98df", fontWeight: "700" }}>Chat App</h2>
           <div className="row">
             <div className="row">
-              <div className="flex-col items-center justify-items-center">
-                <img className="" src={self.photo}></img>
+              <div className="row flex justify-center mt-5">
+                <img
+                  className="rounded-lg shadow-sm"
+                  src={profile.photo ? profile.photo : Profile2}
+                  style={{ height: "100px", width: "120px" }}
+                ></img>
 
-                <h4 className="self-center flex">{self.username}</h4>
+                <p className="text-2xl font-semibold text-center mt-10">
+                  {profile.username}
+                </p>
+
+                <p className="text-2xl font-light text-center mt-10">Bio:</p>
+                <p className="text-1xl font-light text-center mt-10">
+                  {profile.bio}
+                </p>
+                <Modal />
               </div>
             </div>
           </div>
           <div className="grid">
             <h4 className={sidebar.header}>Friend List</h4>
             <div className={sidebar.users}>
+              <div className="col-auto">
+                <div className="input-group">
+                  <button className="btn btn-square">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                      />
+                    </svg>
+                  </button>
+                  <input
+                    type="text"
+                    placeholder="Search…"
+                    className="input input-bordered"
+                  />
+                </div>
+              </div>
               {list.map((user) => (
                 <div
                   className="card w-96 bg-base-100 shadow-sm rounded-lg"
@@ -130,7 +212,11 @@ const Home = () => {
                 >
                   <div className="card-body flex flex-row ">
                     <div>
-                      <img src={Profile2} />
+                      <img
+                        className="rounded-lg"
+                        src={user.photo ? user.photo : Profile2}
+                        style={{ height: "50px", width: "50px" }}
+                      />
                     </div>
                     <div>
                       <p>{user.username}</p>
@@ -139,13 +225,6 @@ const Home = () => {
                 </div>
               ))}
             </div>
-            <div className="col-auto">
-              <input
-                type="text"
-                placeholder="Type here"
-                className="input input-bordered w-full max-w-xs"
-              />
-            </div>
           </div>
         </div>
       </div>
@@ -153,7 +232,11 @@ const Home = () => {
       {/* chat body */}
       <div className="grow h-14">
         <header className={right.Header}>
-          <h3 className="text-[#7e98df] font-semibold"> {friend.username}</h3>
+          <h3 className="text-[#7e98df] font-semibold">
+            {activeReceiver.username
+              ? activeReceiver.username
+              : "Tap Friend to Start Chat"}
+          </h3>
           <div className="dropdown dropdown-bottom dropdown-end">
             <label tabIndex={0} className="btn m-1">
               <img src={Hover} />
