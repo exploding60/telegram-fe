@@ -34,7 +34,7 @@ const Home = () => {
     const data = user.data;
     setLogin(user);
     axios
-      .get(`http://localhost:3009/users/all`)
+      .get(process.env.REACT_APP_BACKEND_API_HOST + `/users/all`)
       .then((response) => {
         console.log(response);
         setList(response.data.data);
@@ -45,7 +45,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    const socket = io("http://localhost:3009/");
+    const socket = io(process.env.REACT_APP_BACKEND_API_HOST);
     socket.on("send-message-response", (response) => {
       // set receiver
       const receiver = JSON.parse(localStorage.getItem("receiver"));
