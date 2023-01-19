@@ -92,16 +92,24 @@ npm start
     <td>Sign-in Page</td>
   </tr>
   <tr>
-    <td><image src='./screenshot/Login.jpeg' width=100%></td>
-    <td><image src='./screenshot/Register.jpeg' width=100%/></td>
+    <td><image src='./screenshot/Login.png' width=100%></td>
+    <td><image src='./screenshot/Register.png' width=100%/></td>
   </tr>
      <tr>
     <td>Home Page</td>
     <td>Home Page - Chat</td>
   </tr>
   <tr>
-    <td><image src='./screenshot/Home.jpeg' width=100%></td>
-    <td><image src='./screenshot/Home-Chat.jpeg' width=100%/></td>
+    <td><image src='./screenshot/Home.png' width=100%></td>
+    <td><image src='./screenshot/Home-Chat.png' width=100%/></td>
+  </tr>
+  <tr>
+    <td>Edit Profilee</td>
+    
+  </tr>
+  <tr>
+    <td><image src='./screenshot/Edit Profile.png' width=100%></td>
+   
   </tr>
   </table>
 
