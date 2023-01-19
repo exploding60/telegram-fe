@@ -123,4 +123,7 @@ npm start
 <!-- CONTACT -->
 ## Contact
 
-My Email : rizkysyahputra14045@gmail.com
+Contributors names and contact info
+
+* Author
+  * Moch Rizky Syahputra [@rizkysyp](https://github.com/rizkysyp)
