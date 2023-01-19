@@ -1,70 +1,118 @@
-# Getting Started with Create React App
+<br />
+<p align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <h3 align="center">Telegram Clone</h3>
+  <p align="center">
+  <image align="center" src='./screenshot/LOGO TELEGRAM.png' />
+  </p>
 
-## Available Scripts
+  <p align="center">
+    <br />
+    <a href="https://github.com/rizkysyp/telegram-fe"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://telechat.rizkyproject.my.id//">View Demo</a>
+    ·
+    <a href="https://github.com/rizkysyp/telegram-be/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/rizkysyp/telegram-be/issues">Request Feature</a>
+  </p>
+</p>
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* [About the Project](#about-the-project)
+  * [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Screenshots](#screenshots)
+* [Related Project](#related-project-backend)
+* [Contact](#contact)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Telegram clone is a chatting aplication, that help you to communicate with your friends trough private chat.
+With this Aplication you can do a private chat, search a user, and update your profile.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Built With
 
-### `npm run eject`
+* [ReactJs](https://reactjs.org/)
+* [Redux](https://redux.js.org/)
+* [React Bootstrap](https://react-bootstrap.github.io/)
+* [Styled Component](https://styled-components.com/)
+* [Socket io](https://socket.io/docs/v4/client-installation/)
+* [Formik](https://formik.org/)
+* [yup](https://www.npmjs.com/package/yup)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<!-- GETTING STARTED -->
+## Getting Started
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Prerequisites
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This is an example of how to list things you need to use the software and how to install them.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* [nodejs](https://nodejs.org/en/download/)
 
-## Learn More
+### Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Clone these 2 repos (Frontend & Backend)
+```sh
+git clone https://github.com/rizkysyp/telegram-fe.git
+```
+2. Install NPM packages
+```sh
+npm install
+```
+3. Add .env file at root folder project, and add following
+```sh
+REACT_APP_BACKEND_API = [Backend API]
+```
+4. Start website
+```sh
+npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<!-- ROADMAP -->
+## Screenshots
 
-### Analyzing the Bundle Size
+<p align='center'>
+   <table>
+    <tr>
+    <td>Sign-up Page</td>
+    <td>Sign-in Page</td>
+  </tr>
+  <tr>
+    <td><image src='./screenshot/Login.jpeg' width=100%></td>
+    <td><image src='./screenshot/Register.jpeg' width=100%/></td>
+  </tr>
+     <tr>
+    <td>Home Page</td>
+    <td>Home Page - Chat</td>
+  </tr>
+  <tr>
+    <td><image src='./screenshot/Home.jpeg' width=100%></td>
+    <td><image src='./screenshot/Home-Chat.jpeg' width=100%/></td>
+  </tr>
+  </table>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+     
 
-### Making a Progressive Web App
+## Related Project
+* [`Frontend-React-Telegram`](https://github.com/rizkysyp/telegram-fe)
+* [`Backend-Telegram-api`](https://github.com/rizkysyp/telegram-be)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+<!-- CONTACT -->
+## Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+My Email : rizkysyahputra14045@gmail.com
