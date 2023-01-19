@@ -1,9 +1,9 @@
 <br />
 <p align="center">
 
-  <h3 align="center">Telegram Clone</h3>
+  <h3 align="center">TeleChat</h3>
   <p align="center">
-  <image align="center" src='./screenshot/LOGO TELEGRAM.png' />
+  <image align="center" src='./screenshot/Logo.png' />
   </p>
 
   <p align="center">
